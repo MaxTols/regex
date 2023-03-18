@@ -26,7 +26,6 @@ pattern_new = r'\1\2\10\4\5\9\7\8'
 
 contacts_list = list()
 for contacts in contacts_list_new:
-    print(contacts)
     contact = ','.join(contacts)
     format_contact = re.sub(pattern, pattern_new, contact)
     contact_list = format_contact.split(',')
@@ -34,6 +33,7 @@ for contacts in contacts_list_new:
         contacts_list.append(contact_list)
 
 for i in contacts_list:
+    # print(len(i))
     for j in contacts_list:
         if i[0] == j[0] and i[1] == j[1] and i != j:
             if i[2] == '':
@@ -46,6 +46,8 @@ for i in contacts_list:
                 i[5] = j[5]
             if i[6] == '':
                 i[6] = j[6]
+            if len(i) > 7:
+                del i[7:]
 
 contact_list = list()
 for page in contacts_list:
